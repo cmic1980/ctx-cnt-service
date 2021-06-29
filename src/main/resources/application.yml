@@ -1,0 +1,44 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9002/eureka/
+  instance:
+    prefer-ip-address: true
+server:
+  port: 9036
+spring:
+  application:
+    name: CNTService
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+#开放所有页面节点  默认只开启了health、info两个节点
+  datasource:
+    url: jdbc:mariadb://192.168.100.12:3306/cnt_service?&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: EYcaDDDoLZ2waFCv
+    driver-class-name: org.mariadb.jdbc.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+multipart:
+  enabled: true
+
+logging:
+  level:
+    root: INFO
+  config: classpath:logging-config.xml
+
+#awsParameterStorePropertySource:
+#  enabled: true
+#
+#awsParameterStoreSource:
+#  ssmClient:
+#    endpointConfiguration:
+#      endpoint: https://ssm.ap-southeast-1.amazonaws.com
+#      signingRegion: ap-southeast-1
